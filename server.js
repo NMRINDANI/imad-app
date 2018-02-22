@@ -79,7 +79,7 @@ return htmlTemplate;
 var articles = {
     
     'articleone' : {
-    title: 'Article || GVPARMAR',
+    title: 'Article || NMRINDANI',
     heading: 'Article-one',
     date :'Feb 23 2018',
     content:`
@@ -87,14 +87,14 @@ var articles = {
     hi welcome allhi welcome allhi welcome allhi welcome all hi welcome all hi welcome all.
     `
 },
-    'articletwo' : { title: 'Article || GVPARMAR',
+    'articletwo' : { title: 'Article || NMRINDANI',
     heading: 'Article-two',
     date :'Feb 24 2018',
     content:`
     hi welcome all hi welcome all hi welcome allhi welcome allhi welcome allhi welcome allhi welcome all
     hi welcome allhi welcome allhi welcome allhi welcome all hi welcome all hi welcome all.
     `},
-    'articlethree' :{ title: 'Article || GVPARMAR',
+    'articlethree' :{ title: 'Article || NMRINDANI',
     heading: 'Article-three',
     date :'Feb 25 2018',
     content:`
