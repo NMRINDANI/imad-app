@@ -2,8 +2,41 @@ var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
 
+var pool=require('pg').Pool;
+var config ={
+    user:'nmrindnai',
+    database:'nmrindani',
+    host:'db.imad.hasura.io',
+    port:'5432',
+    password:progress.env.DB_PASSWORD
+    
+};
+ 
+
+
+
 var app = express();
 app.use(morgan('combined'));
+
+
+var pool=new pool (config);
+apt.get('/test.db',function(req,res){
+    //make a select request
+    //return a response with the results
+});
+pool.query('SELECT * FROM test',function(err,result){
+    if(err){
+        res.status(500).send(err.tostring());
+    }
+    else{res.send(JSON.stringify(result));
+}
+
+
+
+
+
+
+
 
 app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
