@@ -8,7 +8,7 @@ var config ={
     database:'nmrindani',
     host:'db.imad.hasura-app.io',
     port:'5432',
-    password:progress.env.DB_PASSWORD
+    password:process.env.DB_PASSWORD
     
 };
  
