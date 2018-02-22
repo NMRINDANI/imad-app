@@ -39,6 +39,7 @@ pool.query('SELECT * FROM test',function(err,result){
 });
 
 function createTemplate (data){
+    
     var title = data.title;
     var date = data.date;
     var heading = data.heading;
@@ -50,7 +51,7 @@ var htmlTemplate = `
     <head>
        
         <title>
-            ${title}
+         <h3>    ${title}<h3>
         </title>
        
     </head>
