@@ -132,7 +132,7 @@ app.get('/articles/:articlename', function (req, res) {
    { var articleData=result.rows[0];
     res.send(createTemplate(articleData));
  }
-   }
+   
    });
 
   });
