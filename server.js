@@ -38,7 +38,70 @@ pool.query('SELECT * FROM test',function(err,result){
 });
 });
 
+function createTemplate (data){
+    var title = data.title;
+    var date = data.date;
+    var heading = data.heading;
+    var content = data.content;
+    
+    
+var htmlTemplate = `
+<html>
+    <head>
+       
+        <title>
+            ${title}
+        </title>
+       
+    </head>
+        <body>
+                <a href="/">Home</a>
+             <div>
+             <hr/>
+              <h3> ${heading}  </h3>    
+             </div>
+             <div>
+             <h4> ${date}<h4>
+             </div>
+            <h3> This is First page made using html </h3>
+            <div>
+            <div class="container">
+            ${content}
+            </div>
+        </body>
+    
+</html>
+`;
+return htmlTemplate;
+}
 
+
+var articles = {
+    
+    'articleone' : {
+    title: 'Article || GVPARMAR',
+    heading: 'Article-one',
+    date :'Feb 23 2018',
+    content:`
+    hi welcome all hi welcome all hi welcome allhi welcome allhi welcome allhi welcome allhi welcome all
+    hi welcome allhi welcome allhi welcome allhi welcome all hi welcome all hi welcome all.
+    `
+},
+    'articletwo' : { title: 'Article || GVPARMAR',
+    heading: 'Article-two',
+    date :'Feb 24 2018',
+    content:`
+    hi welcome all hi welcome all hi welcome allhi welcome allhi welcome allhi welcome allhi welcome all
+    hi welcome allhi welcome allhi welcome allhi welcome all hi welcome all hi welcome all.
+    `},
+    'articlethree' :{ title: 'Article || GVPARMAR',
+    heading: 'Article-three',
+    date :'Feb 25 2018',
+    content:`
+    hi welcome all hi welcome all hi welcome allhi welcome allhi welcome allhi welcome allhi welcome all
+    hi welcome allhi welcome allhi welcome allhi welcome all hi welcome all hi welcome all.
+    `}
+};
 
 
 
@@ -47,7 +110,7 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/articles/articlename', function (req, res) {
+app.get('/articles/:articlename', function (req, res) {
  // res.sendFile(path.join(__dirname, 'ui', 'article1.html'));
  
  pool.query("SELECT * FROM article WHERE title = '"+ req.params.articleName + "'",function(err,result){
