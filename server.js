@@ -20,7 +20,7 @@ app.use(morgan('combined'));
 
 
 var pool=new pool (config);
-apt.get('/test.db',function(req,res){
+apt.get('/test-db',function(req,res){
     //make a select request
     //return a response with the results
 });
