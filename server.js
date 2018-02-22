@@ -28,10 +28,10 @@ pool.query('SELECT * FROM test',function(err,result){
     if(err){
         res.status(500).send(err.toString());
     }
-    else{res.send(JSON.stringiFy(result));
+    else   {res.send(JSON.stringiFy(result));
     }
 });
-
+});
 
 
 
