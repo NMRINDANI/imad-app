@@ -47,10 +47,10 @@ app.get('/', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'index.html'));
 });
 
-app.get('/articles/articlename', function (req, res) {
+app.get('/articles/:articlename', function (req, res) {
  // res.sendFile(path.join(__dirname, 'ui', 'article1.html'));
  
- pool.query("SELECT * FROM article WHERE title = '"+ req.params.articleName + "'", function(req,result){
+ pool.query("SELECT * FROM article WHERE title = '"+ req.params.articleName + "'",function(req,result){
      if (err)
      {
         res.status(500).send(err.toString());
