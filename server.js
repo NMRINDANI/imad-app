@@ -18,7 +18,7 @@ var htmlTemplate = `
     <head>
        
         <title>
-           ${title}
+        <h3>   ${title}</h3>
         </title>
        
     </head>
@@ -81,6 +81,7 @@ app.get('/:articleName',function (req,res){
 
 //-------------------------------------------------
 //---------table test call(pool) from RDBMS DATABASE---
+
 var pool=require('pg').Pool;
 var config ={
     user:'nmrindani',
@@ -112,7 +113,6 @@ pool.query('SELECT * FROM test',function(err,result){
 //-------pull from article with data article title name  ..io/articles/article-one----
 
 app.get('/articles/:articleName', function (req, res) {
- // res.sendFile(path.join(__dirname, 'ui', 'article1.html'));
  
  pool.query("SELECT * FROM article WHERE title = '"+ req.params.articleName + "'",function(err,result){
      if (err)
