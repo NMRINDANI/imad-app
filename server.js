@@ -7,7 +7,6 @@ app.use(morgan('combined'));
 
 //------------creating Tempplate-----funciton+articles
 function createTemplate (data){
-    
     var title = data.title;
     var date = data.date;
     var heading = data.heading;
@@ -81,7 +80,7 @@ app.get('/:articleName',function (req,res){
 });
 
 //-------------------------------------------------
-//---------table test call(pool) from RDBMS DATABASE
+//---------table test call(pool) from RDBMS DATABASE---
 var pool=require('pg').Pool;
 var config ={
     user:'nmrindani',
