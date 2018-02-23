@@ -6,7 +6,7 @@ app.use(morgan('combined'));
 
 
 //------------creating Tempplate-----funciton+articles
-/*function createTemplate(data){
+function createTemplate(data){
     var title = data.title;
     var date = data.date;
     var heading = data.heading;
@@ -42,7 +42,7 @@ var htmlTemplate = `
 `;
 return htmlTemplate;
 }
-*/
+
 
 var articles = {
     
