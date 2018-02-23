@@ -1,43 +1,11 @@
 var express = require('express');
 var morgan = require('morgan');
 var path = require('path');
-
-var pool=require('pg').Pool;
-var config ={
-    user:'nmrindani',
-    database:'nmrindani',
-    host:'db.imad.hasura-app.io',
-    port:'5432',
-    password:process.env.DB_PASSWORD
-    
-};
- 
-
-
-
 var app = express();
 app.use(morgan('combined'));
 
 
-var pool=new pool (config);
-app.get('/test-db',function(req,res){
-    //make a select request
-    //return a response with the results
-
-
-
-pool.query('SELECT * FROM test',function(err,result){
-   
-   if (err)
-   {
-        res.status(500).send(err.toString());
-    }
-   
-    else   {res.send(JSON.stringify(result));
-            }
-});
-});
-
+//------------creating Tempplate-----funciton+articles
 function createTemplate (data){
     
     var title = data.title;
@@ -51,7 +19,7 @@ var htmlTemplate = `
     <head>
        
         <title>
-         <h3>    ${title}<h3>
+           ${title}
         </title>
        
     </head>
@@ -105,17 +73,45 @@ var articles = {
 };
 
 
-//----------------------------------------
+//------------------call articleName----------------------
 
 app.get('/:articleName',function (req,res){
     var articleName = req.params.articleName;
     res.send(createTemplate(articles[articleName]));
 });
 
-//---------------------------------------
-app.get('/', function (req, res) {
-  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+//-------------------------------------------------
+//---------table test call(pool) from RDBMS DATABASE
+var pool=require('pg').Pool;
+var config ={
+    user:'nmrindani',
+    database:'nmrindani',
+    host:'db.imad.hasura-app.io',
+    port:'5432',
+    password:process.env.DB_PASSWORD
+    
+};
+ 
+var pool=new pool (config);
+app.get('/test-db',function(req,res){
+    //make a select request
+    //return a response with the results
+
+pool.query('SELECT * FROM test',function(err,result){
+   
+   if (err)
+   {
+        res.status(500).send(err.toString());
+    }
+   
+    else   {res.send(JSON.stringify(result));
+            }
 });
+});
+
+//-----------------------------------------------------------------------------
+
+//-------pull from article with data article title name  ..io/articles/article-one----
 
 app.get('/articles/:articleName', function (req, res) {
  // res.sendFile(path.join(__dirname, 'ui', 'article1.html'));
@@ -137,7 +133,7 @@ app.get('/articles/:articleName', function (req, res) {
    });
 
   });
-  
+//-------------------------------------------------------------  
 /*app.get('/article2', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'article2.html'));
   });
@@ -147,7 +143,9 @@ app.get('/article3', function (req, res) {
   });  
   */
 
-
+app.get('/', function (req, res) {
+  res.sendFile(path.join(__dirname, 'ui', 'index.html'));
+});
 
 app.get('/ui/style.css', function (req, res) {
   res.sendFile(path.join(__dirname, 'ui', 'style.css'));
