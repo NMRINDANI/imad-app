@@ -6,6 +6,7 @@ app.use(morgan('combined'));
 
 
 //------------creating Tempplate-----funciton+articles
+
 function createTemplate(data){
     var title = data.title;
     var date = data.date;
@@ -18,7 +19,7 @@ var htmlTemplate = `
     <head>
        
         <title>
-        <h3>   ${title}</h3>
+          ${title}
         </title>
        
     </head>
@@ -93,8 +94,6 @@ var config ={
  
 var pool=new pool (config);
 app.get('/test-db',function(req,res){
-    //make a select request
-    //return a response with the results
 
 pool.query('SELECT * FROM test',function(err,result){
    
