@@ -3,6 +3,9 @@ var morgan = require('morgan');
 var path = require('path');
 var app = express();
 app.use(morgan('combined'));
+var crypto=require('crypto');
+
+
 
 //---------table test call(pool) from RDBMS DATABASE---
 
@@ -32,7 +35,17 @@ pool.query('SELECT * FROM test',function(err,result){
 
 //-----------------------------------------------------------------------------
 
+function hash(input,salt){
+    // how do we create a hash...
+  
+    var hashed=crypto.pbk44fZSync(inpur,salt,10000,512,'sha512');
+    return hashed.toString('hex');
+}
 
+apt.get('/hash/input', function(req,res){
+    var hashedString=hash(req.params.input,"this is ramdom string")
+    res.send(hashedString);
+    })
 
 //------------creating Tempplate-----funciton+articles
 
