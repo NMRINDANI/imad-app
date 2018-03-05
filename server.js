@@ -43,9 +43,9 @@ function hash(input,salt){
 }
 
 apt.get('/hash/input', function(req,res){
-    var hashedString=hash(req.params.input,"this is ramdom string")
+    var hashedString=hash(req.params.input,"this is ramdom string");
     res.send(hashedString);
-    })
+    });
 
 //------------creating Tempplate-----funciton+articles
 
