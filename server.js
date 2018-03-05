@@ -38,7 +38,7 @@ pool.query('SELECT * FROM test',function(err,result){
 function hash(input,salt){
     // how do we create a hash...
   
-    var hashed=crypto.pbk44fZSync(inpur,salt,10000,512,'sha512');
+    var hashed=crypto.pbkdf2Sync(inpur,salt,10000,512,'sha512');
     return hashed.toString('hex');
 }
 
