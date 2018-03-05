@@ -42,7 +42,7 @@ function hash(input,salt){
     return hashed.toString('hex');
 }
 
-apt.get('/hash/:input', function(req,res){
+app.get('/hash/:input', function(req,res){
     var hashedString=hash(req.params.input,"this is ramdom string");
     res.send(hashedString);
     });
